@@ -10,15 +10,19 @@
 
     <table class="highlight">
         <tr>
-            <th>Song</th><th>Singer</th><th>Genre</th><th>Price</th>
+            <th>Song</th><th>Singer</th><th>Genre</th><th>Price</th><th>likes</th>
         </tr>
-
         <% items.forEach(function(item){  %>
         <tr>
         <td><a href="<%= item.YoutubeURL %>" target="opensim"><%= item.song %></a></td>
         <td><%= item.Singer %></td>
         <td><%= item.genre %></td>
         <td><%= item.Price %></td>
+            <td><%= item.likes %></td>
+        <td>
+            <a href="/like?song=<%= item.song %>"><i class="material-icons">favorite</i></a>
+            <a href="/delete?song=<%= item.song %>"><i class="material-icons">delete</i></a>
+            </td>
         </tr>
 
         <% }) %>

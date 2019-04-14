@@ -4,7 +4,8 @@
 <body>
 <% include ./header %>
 
-    <a class="btn" href="/additem">Add New Item</a>
+    <a class="btn-floating pulse"  href="/additem"><i class="material-icons">add</i>add song</a>
+
 
     <div class="card">
 
@@ -17,11 +18,12 @@
         <td><a href="<%= item.YoutubeURL %>" target="opensim"><%= item.song %></a></td>
         <td><%= item.Singer %></td>
         <td><%= item.genre %></td>
-        <td><%= item.Price %></td>
+            <td>$<%= item.Price %></td>
             <td><%= item.likes %></td>
+
         <td>
-            <a href="/like?song=<%= item.song %>"><i class="material-icons">favorite</i></a>
-            <a href="/delete?song=<%= item.song %>"><i class="material-icons">delete</i></a>
+            <a class="btn" href="/like?song=<%= item.song %>"><i class="material-icons">favorite</i></a><br>
+            <a class="btn" href="/delete?song=<%= item.song %>"><i class="material-icons">cancel</i></a>
             </td>
         </tr>
 

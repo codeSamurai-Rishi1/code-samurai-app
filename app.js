@@ -47,6 +47,12 @@ console.log('Trending app started on http://localhost:'+port);
 // --------- start of helper functions --------------
 // --------------------------------------------------
 
+function addNewUserAccount(userName, password){
+    Users = db.getCollection("users");
+    User.insert({username:userName,password:password});
+}
+
+
 // function to match username and password
 function userPasswordMatch (userName, password) {
     var loginUser = User.findOne({username:userName,password:password});
@@ -94,6 +100,7 @@ app.get('/', function (request, response) {
     response.render('index', {message: null});
 });
 
+
 app.get('/like', function (request, response) {
    var song = request.query.song;
     var items = likeAndSort('song',song);
@@ -112,7 +119,29 @@ app.get('/additem', function (request, response) {
     response.render('addpage',{loginName:request.session.user});
 });
 
+//this method is called when the user clicks on sign up
+app.get('/signUp', function (request, response) {
 
+   response.render('signUp', {message: ""});
+});
+
+
+app.post('/signUpSubmit', function (request, response) {
+ var password = request.body.password;
+ var confirmPassword = request.body.confirmPassword
+ var userName = request.body.userName
+ if(password === confirmPassword){
+
+        response.render('listpage', {items: Item.find()});
+    }
+    else{
+        addNewUserAccount(userName,password);
+        response.render('signUp', {message: "Password needs to match"});
+
+    }
+
+
+});
 
 // click Welcome on login page
 app.post('/login', function (request, response) {

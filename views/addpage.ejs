@@ -4,30 +4,15 @@
 <body>
 <% include ./header %>
 
-<div class="card card-panel teal lighten-2">
-
+<div class="card ">
     <form method="post" action="saveitem">
-
-
-
-
-
-
-
         Song: <input type="text" name="song" required />
         Singer: <input type="text" name="Singer" required />
         Youtube URL: <input type="url" name="YoutubeURL" required/>
-        Genre: <input type="text" name="genre"/>
         Price: <input type="number" step="any" name="Price" />
         Added by: <input type="text" name="addedBy" value="<%=loginName%>" readonly/>
-
-
-
         <button class="btn" type="submit" name="submit">Save Item</button>
-
     </form>
-
-
 </div>
 <% include ./footer %>
 </body>
